@@ -56,4 +56,17 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    //implementation("androidx.compose.ui:ui")
+    //implementation("androidx.compose.material3:material3")
+    implementation(libs.androidx.compose.foundation)
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+    // Compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    // Coil
+    implementation(libs.coil.compose)
+
+    testImplementation(libs.mockito.core)
 }
