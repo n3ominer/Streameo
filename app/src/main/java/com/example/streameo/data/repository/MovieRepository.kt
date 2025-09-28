@@ -1,7 +1,7 @@
-package com.example.streameo
+package com.example.streameo.data.repository
 
-import com.example.streameo.data.model.Movie
 import com.example.streameo.data.mock.MockMovieData
+import com.example.streameo.data.model.Movie
 import kotlinx.coroutines.delay
 
 class MovieRepository {
