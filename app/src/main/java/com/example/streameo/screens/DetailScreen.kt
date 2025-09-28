@@ -1,4 +1,4 @@
-package com.example.streameo.ui.screens
+package com.example.streameo.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
@@ -26,7 +26,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.streameo.ui.components.BlurryIconButton
+import com.example.streameo.ui.components.common.BlurryIconButton
 
 @Composable
 fun DetailScreen(movie: Movie?, onBack: () -> Unit) {

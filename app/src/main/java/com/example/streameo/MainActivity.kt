@@ -3,45 +3,53 @@ package com.example.streameo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
+import com.example.streameo.navigation.StreameoNavigation
+import com.example.streameo.ui.components.navigation.BottomNavigationBar
 import com.example.streameo.ui.theme.StreameoTheme
+import com.example.streameo.viewmodels.MovieViewModel
 
+
+/**
+ * Main activity for the Streameo app
+ * Simplified and cleaned up to use the new navigation architecture
+ */
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             StreameoTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                StreameoApp()
             }
         }
     }
 }
 
+/**
+ * Main composable for the Streameo app
+ */
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    StreameoTheme {
-        Greeting("Android")
+private fun StreameoApp() {
+    val navController = rememberNavController()
+    val viewModel: MovieViewModel = viewModel()
+    
+    Scaffold(
+        bottomBar = {
+            BottomNavigationBar(navController)
+        }
+    ) { innerPadding ->
+        StreameoNavigation(
+            navController = navController,
+            viewModel = viewModel,
+            modifier = Modifier.padding(innerPadding)
+        )
     }
 }
+
+
