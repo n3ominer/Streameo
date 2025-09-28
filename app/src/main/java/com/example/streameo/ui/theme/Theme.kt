@@ -12,9 +12,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = OrangeAccent,
+    secondary = GrayLight,
+    tertiary = GrayDark,
+    background = Black,
+    surface = Black,
+    onPrimary = Black,
+    onSecondary = White,
+    onTertiary = White,
+    onBackground = White,
+    onSurface = White
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -34,24 +41,9 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun StreameoTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
-) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
+fun StreameoTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = DarkColorScheme,
         typography = Typography,
         content = content
     )
